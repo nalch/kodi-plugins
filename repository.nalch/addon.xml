@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.nalch" name="nalch.de Add-ons" version="1.0.0" provider-name="nalch">
+	<extension point="xbmc.addon.repository" name="nalch">
+		<info compressed="true">https://raw.githubusercontent.com/nalch/kodi-plugins/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/nalch/kodi-plugins/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/nalch/kodi-plugins/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">nalch's kodi repository</summary>
+		<summary lang="de">nalch's kodi repository</summary>
+		<description lang="en">nalch's kodi repository</description>
+		<description lang="de">nalch's kodi repository</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+	<assets>
+        <icon>icon.png</icon>
+        <!--<fanart>fanart.jpg</fanart>-->
+        <banner></banner>
+        <clearlogo></clearlogo>
+        <screenshot></screenshot>
+    </assets>
+</addon>
