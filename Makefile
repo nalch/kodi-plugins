@@ -1,7 +1,7 @@
 VERSION_GREP = | grep \<addon | tr 'A-Z' 'a-z' | sed 's/.*version="\([^"]*\)"*.*/\1/g'
 IN_ENV = . .env/bin/activate &&
 
-update-addons:
+update-addons: dist
 	echo "<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<addons>" > addons.xml && \
 	find plugin*/addon.xml -maxdepth 0 -type f -exec sh -c 'cat {} | tail -n +2' >> addons.xml \; && \
 	echo "</addons>" >> addons.xml && \
@@ -9,7 +9,7 @@ update-addons:
 
 dist:
 	for PLUGIN_DIR in $$(find plugin* -maxdepth 0 -type d); do \
-		VERSION=$$(cat repository.nalch/addon.xml $(VERSION_GREP)); \
+		VERSION=$$(cat $$PLUGIN_DIR/addon.xml $(VERSION_GREP)); \
 		echo "$$PLUGIN_DIR-$$VERSION"; \
 		zip -r $$PLUGIN_DIR/$$PLUGIN_DIR-$$VERSION.zip $$PLUGIN_DIR/ -x \*.zip -x \*.git; \
 	done
