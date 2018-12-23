@@ -24,7 +24,7 @@ env:
 
 init: env test_reqs
 
-test_reqs:
+test_reqs: env
 	$(IN_ENV) pip install pycodestyle flake8
 
 test:
