@@ -22,7 +22,12 @@ def build_streams():
     config_path = addon.getSetting('stream_config')
     if config_path:
         with open(config_path, 'r') as config_file:
-            streams = yaml.safe_load(config_file)['streams']
+            try:
+                streams = yaml.safe_load(config_file)['streams']
+            except KeyError:
+                raise ValueError(
+                    'Config file should have a root key called "streams"'
+                )
     return streams
 
 
@@ -31,6 +36,7 @@ def build_menu():
     song_list = []
 
     for title, stream_config in build_streams().items():
+        stream_config = {'url': '', 'fanart_image': ''}.update(stream_config)
         li = xbmcgui.ListItem(
             label=title,
             thumbnailImage=stream_config['fanart_image']
