@@ -36,15 +36,16 @@ def build_menu():
     song_list = []
 
     for title, stream_config in build_streams().items():
-        stream_config = {'url': '', 'fanart_image': ''}.update(stream_config)
+        stream_settings = {'url': '', 'fanart_image': ''}
+        stream_settings.update(stream_config)
         li = xbmcgui.ListItem(
             label=title,
-            thumbnailImage=stream_config['fanart_image']
+            thumbnailImage=stream_settings['fanart_image']
         )
-        li.setProperty('fanart_image', stream_config['fanart_image'])
+        li.setProperty('fanart_image', stream_settings['fanart_image'])
         li.setProperty('IsPlayable', 'true')
         url = build_url({
-            'url': stream_config['url'],
+            'url': stream_settings['url'],
             'mode': 'stream',
             title: title
         })
