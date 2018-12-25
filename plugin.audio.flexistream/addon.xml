@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.audio.flexistream" name="FlexiStream" version="1.0.1" provider-name="nalch">
+<addon id="plugin.audio.flexistream" name="FlexiStream" version="1.0.2" provider-name="nalch">
   <requires>
     <import addon="xbmc.python" version="2.20.0"/>
     <import addon="script.module.yaml" version="3.11.0"/>
@@ -10,9 +10,7 @@
   <extension point="xbmc.addon.metadata">
     <summary lang="en_GB">Dynamically load and play internet audio streams</summary>
     <description lang="en_GB">Dynamically load and play internet audio streams</description>
-    <disclaimer lang="en_GB">
-      Icons made by Prosymbols from www.flaticon.com is licensed by CC 3.0
-    </disclaimer>
+    <disclaimer lang="en_GB"></disclaimer>
     <language></language>
     <platform>all</platform>
     <license></license>
