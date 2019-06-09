@@ -25,7 +25,7 @@ env:
 init: env test_reqs
 
 test_reqs: env
-	$(IN_ENV) pip install pycodestyle flake8
+	$(IN_ENV) pip install flake8
 
 test:
 	$(IN_ENV) flake8 plugin*/*.py
