@@ -28,7 +28,6 @@ test_reqs: env
 	$(IN_ENV) pip install pycodestyle flake8
 
 test:
-	$(IN_ENV) pycodestyle plugin*/*.py
 	$(IN_ENV) flake8 plugin*/*.py
 
 all: dist update-addons repository
