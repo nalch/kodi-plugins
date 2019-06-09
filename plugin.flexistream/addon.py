@@ -31,9 +31,9 @@ def build_streams():
     return streams
 
 
-def build_menu():
+def build_menu(content_type='audio'):
     """Build the plugin's menu from the streams"""
-    song_list = []
+    item_list = []
 
     for title, stream_config in build_streams().items():
         stream_settings = {'url': '', 'fanart_image': ''}
@@ -50,10 +50,13 @@ def build_menu():
             title: title
         })
 
-        song_list.append((url, li, False))
+        item_list.append((url, li, False))
 
-    xbmcplugin.addDirectoryItems(addon_handle, song_list, len(song_list))
-    xbmcplugin.setContent(addon_handle, 'songs')
+    xbmcplugin.addDirectoryItems(addon_handle, item_list, len(item_list))
+    xbmcplugin.setContent(
+        addon_handle,
+        'songs' if content_type == 'audio' else 'movies'
+    )
     xbmcplugin.endOfDirectory(addon_handle)
 
 
@@ -66,9 +69,10 @@ def play_stream(url):
 def main():
     args = urlparse.parse_qs(sys.argv[2][1:])
     mode = args.get('mode', None)
+    content_type = args.get('content_type', 'audio')
 
     if mode is None:
-        build_menu()
+        build_menu(content_type)
     elif mode[0] == 'stream':
         play_stream(args['url'][0])
 
