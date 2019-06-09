@@ -31,4 +31,35 @@
     </assets>
   </extension>
 </addon>
+<addon id="plugin.video.flexistream" name="FlexiStream" version="1.0.0" provider-name="nalch">
+  <requires>
+    <import addon="xbmc.python" version="2.20.0"/>
+    <import addon="script.module.yaml" version="3.11.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Dynamically load and play internet video streams</summary>
+    <description lang="en_GB">Dynamically load and play internet video streams</description>
+    <disclaimer lang="en_GB"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+    <news>v1.0.0
+      - Initial release
+    </news>
+    <assets>
+        <icon>resources/icon.png</icon>
+        <!--<fanart>resources/fanart.jpg</fanart>-->
+        <banner></banner>
+        <clearlogo></clearlogo>
+        <screenshot></screenshot>
+    </assets>
+  </extension>
+</addon>
 </addons>
