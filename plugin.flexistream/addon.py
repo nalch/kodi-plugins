@@ -17,7 +17,7 @@ def build_url(query):
 def build_streams():
     """Query streams from the configuration file and settings"""
     addon = xbmcaddon.Addon()
-    streams = []
+    streams = {}
 
     config_path = addon.getSetting('stream_config')
     if config_path:
@@ -31,11 +31,26 @@ def build_streams():
     return streams
 
 
+def guess_stream_type(config):
+    """Try to guess the stream type based on the config item"""
+    if 'type' in config:
+        return config['type']
+
+    if config['url'].endswith('mp3'):
+        return 'audio'
+
+    return 'video'
+
+
 def build_menu(content_type='audio'):
     """Build the plugin's menu from the streams"""
     item_list = []
 
     for title, stream_config in build_streams().items():
+        stream_type = guess_stream_type(stream_config)
+        if stream_type != content_type:
+            continue
+
         stream_settings = {'url': '', 'fanart_image': ''}
         stream_settings.update(stream_config)
         li = xbmcgui.ListItem(
@@ -44,6 +59,7 @@ def build_menu(content_type='audio'):
         )
         li.setProperty('fanart_image', stream_settings['fanart_image'])
         li.setProperty('IsPlayable', 'true')
+        li.setInfo(stream_type, {})
         url = build_url({
             'url': stream_settings['url'],
             'mode': 'stream',
