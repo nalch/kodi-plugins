@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <setting id="start_ep" type="file" default="onepiece.yml" label="Stream Config File"/>
+</settings>
