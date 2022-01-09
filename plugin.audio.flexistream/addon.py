@@ -1,7 +1,6 @@
 import sys
-import urllib
 import yaml
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlencode
 
 import xbmcaddon
 import xbmcgui
@@ -11,7 +10,7 @@ import xbmcplugin
 def build_url(query):
     """Compose url from baseurl and the actual query"""
     base_url = sys.argv[0]
-    return base_url + '?' + urllib.urlencode(query)
+    return base_url + '?' + urlencode(query)
 
 
 def build_streams():
@@ -64,7 +63,7 @@ def play_stream(url):
 
 
 def main():
-    args = urlparse.parse_qs(sys.argv[2][1:])
+    args = parse_qs(sys.argv[2][1:])
     mode = args.get('mode', None)
 
     if mode is None:
