@@ -1,7 +1,7 @@
 import sys
 import urllib
-import urlparse
 import yaml
+from urllib.parse import urlparse
 
 import xbmcaddon
 import xbmcgui
