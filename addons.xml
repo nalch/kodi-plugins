@@ -31,9 +31,9 @@
     </assets>
   </extension>
 </addon>
-<addon id="plugin.flexistream" name="FlexiStream" version="1.0.1" provider-name="nalch">
+<addon id="plugin.flexistream" name="FlexiStream" version="2.0.0" provider-name="nalch">
   <requires>
-    <import addon="xbmc.python" version="2.20.0"/>
+    <import addon="xbmc.python" version="3"/>
     <import addon="script.module.yaml" version="3.11.0"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
@@ -50,8 +50,8 @@
     <website></website>
     <email></email>
     <source>https://github.com/nalch/kodi-plugins</source>
-    <news>v1.0.0
-      - Initial release
+    <news>v2.0.0
+      - Matrix release
     </news>
     <assets>
         <icon>resources/icon.png</icon>

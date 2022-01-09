@@ -20,7 +20,7 @@ repository:
 	zip -r repository.nalch-$$VERSION.zip repository.nalch/ -x \*.zip -x \*.git
 
 env:
-	virtualenv .env -p python2.7
+	python3 -m venv .env
 
 init: env test_reqs
 
