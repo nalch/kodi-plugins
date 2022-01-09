@@ -35,10 +35,7 @@ def guess_stream_type(config):
     if 'type' in config:
         return config['type']
 
-    if config['url'].endswith('mp3'):
-        return 'audio'
-
-    return 'video'
+    return 'audio'
 
 
 def build_menu(content_type='audio'):
@@ -47,18 +44,18 @@ def build_menu(content_type='audio'):
 
     for title, stream_config in build_streams().items():
         stream_type = guess_stream_type(stream_config)
-        if stream_type != content_type:
+        if stream_type not in content_type:
             continue
 
         stream_settings = {'url': '', 'fanart_image': ''}
         stream_settings.update(stream_config)
-        li = xbmcgui.ListItem(
-            label=title,
-            thumbnailImage=stream_settings['fanart_image']
-        )
-        li.setProperty('fanart_image', stream_settings['fanart_image'])
-        li.setProperty('IsPlayable', 'true')
-        li.setInfo(stream_type, {})
+
+        li = xbmcgui.ListItem(label=title)
+        li.setInfo(stream_type, infoLabels={})
+        li.setArt({
+            'thumb': stream_settings['fanart_image'],
+            'fanart': stream_settings['fanart_image'],
+        })
         url = build_url({
             'url': stream_settings['url'],
             'mode': 'stream',
