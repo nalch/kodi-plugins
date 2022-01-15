@@ -56,6 +56,7 @@ def build_menu(content_type='audio'):
             'thumb': stream_settings['fanart_image'],
             'fanart': stream_settings['fanart_image'],
         })
+        li.setProperty('IsPlayable', 'true')
         url = build_url({
             'url': stream_settings['url'],
             'mode': 'stream',
